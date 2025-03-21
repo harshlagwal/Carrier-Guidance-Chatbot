@@ -2,10 +2,10 @@ import streamlit as st
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 import torch
 
-# ✅ Streamlit Page Setup
+#  Streamlit Page Setup
 st.set_page_config(page_title="Safalta Apki - Career Guidance", layout="wide")
 
-# ✅ Custom Styling (Black Background, Blue Title)
+#  Custom Styling (Black Background, Blue Title)
 st.markdown(
     """
     <style>
@@ -27,7 +27,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ✅ Model & Tokenizer Loading (Efficient with Caching)
+#  Model & Tokenizer Loading (Efficient with Caching)
 @st.cache_resource
 def load_model():
     model_name = "MBZUAI/LaMini-T5-738M"
@@ -37,7 +37,7 @@ def load_model():
 
 tokenizer, model = load_model()
 
-# ✅ Function to Get AI Response
+#  Function to Get AI Response
 def get_chatbot_response(user_input):
     try:
         input_text = f"Provide career advice for: {user_input}"
@@ -51,7 +51,7 @@ def get_chatbot_response(user_input):
     except Exception as e:
         return f"⚠ Error: {str(e)}"
 
-# ✅ Sidebar - User Details Form
+#  Sidebar - User Details Form
 st.sidebar.header("👤 Fill Your Details")
 name = st.sidebar.text_input("📝 Your Name")
 age = st.sidebar.number_input("🎂 Your Age", min_value=10, max_value=60, value=18)
@@ -80,7 +80,7 @@ if st.button("💡 Get Answer"):
     else:
         st.warning("⚠ Please enter a question!")
 
-# ✅ Footer
+#  Footer
 st.markdown("---")
 st.write("💡 **Safalta Apki** - Your Guide to a Successful Career! 🚀")
 st.write("👨‍💻 Developed by Team Safalta Apki")
